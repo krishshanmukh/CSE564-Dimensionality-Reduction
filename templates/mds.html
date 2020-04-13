@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block script %}
+<script src="{{ url_for('static', filename = 'd3-tip.js') }}"></script>
+<script src="{{ url_for('static', filename = 'helper.js') }}"></script>
+<script>
+
+    var data = {{ data | safe }}
+    var meta_data = {{ meta_data | safe }}
+    console.log(data);
+    // Set the dimensions of the canvas / graph
+    updateScatterPlot(data, meta_data, "MDS" + " " + "{{ plot }}");
+</script>
+{% endblock script %}

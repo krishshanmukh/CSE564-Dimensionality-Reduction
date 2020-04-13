@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% block script %}
+<style>
+
+svg {
+font: 10px sans-serif;
+padding: 10px;
+}
+
+.axis,
+.frame {
+shape-rendering: crispEdges;
+}
+
+.axis line {
+stroke: #ddd;
+}
+
+.axis path {
+display: none;
+}
+
+.cell text {
+font-weight: bold;
+text-transform: capitalize;
+fill: black;
+}
+
+.frame {
+fill: none;
+stroke: #aaa;
+}
+
+circle {
+fill-opacity: .7;
+}
+
+circle.hidden {
+fill: #ccc !important;
+}
+
+.extent {
+fill: #000;
+fill-opacity: .125;
+stroke: #fff;
+}
+
+</style>
+<script src="{{ url_for('static', filename = 'd3-tip.js') }}"></script>
+<script src="{{ url_for('static', filename = 'helper.js') }}"></script>
+<script>
+
+    var data = {{ data | safe }}
+    console.log(data);
+    // Set the dimensions of the canvas / graph
+    updateScatterPlotMatrix(data, "Scatter Plot Matrix");
+</script>
+{% endblock script %}
